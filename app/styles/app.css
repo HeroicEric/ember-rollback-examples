@@ -1,0 +1,9 @@
+.order {
+  width: 67%;
+  float: right;
+}
+
+.products {
+  width: 33%;
+  float: left;
+}

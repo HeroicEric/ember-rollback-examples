@@ -1,0 +1,7 @@
+{{#link-to "new-order"}}New Order{{/link-to}}
+
+{{#each model.orders as |order|}}
+  <p>
+    {{#link-to "order" order.id}}Order #{{order.id}}{{/link-to}}
+  </p>
+{{/each}}

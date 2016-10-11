@@ -1,0 +1,32 @@
+<h1>Order #{{model.order.id}}</h1>
+
+<p>{{model.order.description}}</p>
+
+<h2>Line Items</h2>
+
+<ul>
+  {{#each (filter-by "isDeleted" false model.lineItems) as |lineItem|}}
+    <li>
+      {{lineItem.product.name}}
+      <button onclick={{action "removeProduct" lineItem}}>X</button>
+    </li>
+  {{/each}}
+</ul>
+
+<h2>Removed Line Items</h2>
+
+<ul>
+  {{#each (filter-by "isDeleted" true model.lineItems) as |lineItem|}}
+    <li>
+      {{lineItem.product.name}}
+    </li>
+  {{/each}}
+</ul>
+
+<button onclick={{action "save"}} disabled={{not hasChanges}}>
+  Save
+</button>
+
+<button onclick={{action "reset"}} disabled={{not hasChanges}}>
+  Reset
+</button>

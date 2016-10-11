@@ -1,0 +1,42 @@
+<h1>New Order</h1>
+
+<div class="products">
+  <h3>Products</h3>
+
+  {{#each model.products as |product|}}
+    <p>
+      <button onclick={{action "addProduct" product}}>
+        {{product.name}}
+      </button>
+    </p>
+  {{/each}}
+</div>
+
+<div class="order">
+  <h3>Order</h3>
+
+  <form onsubmit={{action "save"}}>
+    <div>
+      <label>Description
+        <input
+          type="text"
+          placeholder="Description..."
+          value={{model.order.description}}
+          oninput={{action (mut model.order.description) value="target.value"}}
+        />
+      </label>
+    </div>
+
+    <h4>Line Items</h4>
+
+    <ul>
+      {{#each model.lineItems as |lineItem|}}
+        <li>{{lineItem.product.name}}</li>
+      {{/each}}
+    </ul>
+
+    <div>
+      <input type="submit" value="Save">
+    </div>
+  </form>
+</div>
